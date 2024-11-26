@@ -1,3 +1,4 @@
 Este es un nuevo fichero
 hola esto es un cambio remoto
 otro cambio remoto
+nuevon conflicto en línea 4
