@@ -18,27 +18,15 @@ connection = create_server_connection()
 # cierre cursor
 # cierro conexión
 connection.close()
-# Crear tabla
+# SELECT
 conn = create_server_connection()
-# Open a cursor to perform database operations
+
 cur = conn.cursor()
-# Execute a command: create datafund_students table
-try:
-    cur.execute("""CREATE TABLE datafund_students(
-                student_id SERIAL PRIMARY KEY,
-                student_name VARCHAR (50) UNIQUE NOT NULL,
-                student_email VARCHAR (100) NOT NULL,
-                student_age INT NOT NULL);
-                """)
-    # Make the changes to the database persistent
-    conn.commit()
-except Error as err:
-        print(f"Error: '{err}'")
-        conn.rollback()
 
-# Close cursor and communication with the database
+cur.execute('SELECT * FROM datafund_students;')
+rows = cur.fetchall()
+conn.commit()
 cur.close()
-# mas ordenes...isno cierro conexión
 conn.close()
-
-
+for row in rows:
+    print(row)
